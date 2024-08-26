@@ -19,3 +19,36 @@
     height: 100%;
     object-fit: cover;
 }
+
+
+.error-message {
+    color: #ff3636e0;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+
+footer {
+    background-color: #004d99; /* Darker primary color for a more elegant look */
+}
+
+footer h5 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+footer p, footer a {
+    color: #dcdcdc;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+footer .fab {
+    transition: color 0.3s;
+}
+
+footer .fab:hover {
+    color: #ffa500;
+}

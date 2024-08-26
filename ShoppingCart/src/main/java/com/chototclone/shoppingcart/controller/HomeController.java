@@ -1,6 +1,7 @@
 package com.chototclone.shoppingcart.controller;
 
 import com.chototclone.shoppingcart.model.UserDtls;
+import com.chototclone.shoppingcart.payload.request.LoginRequest;
 import com.chototclone.shoppingcart.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class HomeController {
@@ -41,12 +43,10 @@ public class HomeController {
         return "login";
     }
 
-
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute UserDtls user,
-                           @RequestParam("img") MultipartFile file,
-                           HttpSession session
-    ) throws IOException {
+            @RequestParam("img") MultipartFile file,
+            HttpSession session) throws IOException {
         boolean existsEmail = userService.existsEmail(user.getEmail());
         if (existsEmail) {
             session.setAttribute("errorMsg", "Email already exists");
@@ -61,7 +61,6 @@ public class HomeController {
 
                     Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + "profile_img" + File.separator
                             + file.getOriginalFilename());
-                    System.out.println(path.toUri().toString());
                     Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
                 }
                 session.setAttribute("successMsg", "Register successfully");
@@ -71,4 +70,10 @@ public class HomeController {
         }
         return "redirect:/register";
     }
+
+    @PostMapping("/doLogin")
+    public String doLogin(@ModelAttribute LoginRequest request, HttpSession session) {
+        return "";
+    }
+
 }
