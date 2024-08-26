@@ -1,0 +1,21 @@
+.custom-category-card {
+    width: 100%;
+    max-width: 18rem;
+    height: auto; /* Điều chỉnh chiều cao tự động */
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.custom-category-card .card-img-wrapper {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-category-card img {
+    margin: 10px;
+    width: 70%;
+    height: 100%;
+    object-fit: cover;
+}
